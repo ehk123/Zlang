@@ -1,4 +1,4 @@
-# compiler
+# Zlang
 
 ## Installing / Getting started
 
