@@ -4,4 +4,4 @@ project(zlang)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_exectuable(zlang/main.cpp)
+add_executable(zlang src/main.cpp)
