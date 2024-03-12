@@ -45,3 +45,7 @@ Install nasm.
 ```
 sudo apt install nasm
 ```
+Install cmake.
+```
+sudo apt install cmake
+```
