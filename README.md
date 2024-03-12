@@ -1,4 +1,5 @@
 # Zlang
+A compiled esoteric programming langauge designed to resemble the popular slang of Gen Z.
 
 ## Installing / Getting started
 
