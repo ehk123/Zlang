@@ -20,8 +20,8 @@ struct Token {
 std::vector<Token> tokenize(const std::string& str)
 {
     std::vector<Token> tokens;
-
     std::string buf;
+
     for (int i = 0; i < str.length(); i++)
     {
         char c = str.at(i);
@@ -41,32 +41,37 @@ std::vector<Token> tokenize(const std::string& str)
                 buf.clear();
                 continue;
             }
-            else if (std::isdigit(c))
-            {
-                buf.push_back(c);
-                i++;
-                while (std::isdigit(str.at(i)))
-                {
-                    buf.push_back(str.at(i));
-                    i++;
-                }
-                i--;
-                tokens.push_back({.type = TokenType::int_lit, .value = buf});
-                buf.clear();
-            }
-            else if (c == ';')
-            {
-                tokens.push_back({.type = TokenType::semi});
-            }
-            else if (std::isspace(c))
-            {
-                continue;
-            }
             else
             {
                 std::cerr << "Ur syntax is cooked." << std::endl;
                 exit(EXIT_FAILURE);
             }
+        }
+        else if (std::isdigit(c))
+        {
+            buf.push_back(c);
+            i++;
+            while (std::isdigit(str.at(i)))
+            {
+                buf.push_back(str.at(i));
+                i++;
+            }
+            i--;
+            tokens.push_back({.type = TokenType::int_lit, .value = buf});
+            buf.clear();
+        }
+        else if (c == ';')
+            {
+                tokens.push_back({.type = TokenType::semi});
+            }
+        else if (std::isspace(c))
+        {
+            continue;
+        }
+        else
+        {
+            std::cerr << "Ur syntax is cooked." << std::endl;
+            exit(EXIT_FAILURE);
         }
     }
     return tokens;
