@@ -33,3 +33,6 @@
 
 # User configs
 .vscode
+
+# Build folder
+build

@@ -41,6 +41,10 @@ From the extension, click “Connect to Host”, then “Add New SSH Host”.
 \
 Type in `ssh ubuntu@<ip address>` where `<ip address>` is replaced with the IP address of the instance that we noted down earlier.
 ### Install dependencies
+Make sure gcc is up to date.
+```
+sudo apt-get update
+```
 Install nasm.
 ```
 sudo apt install nasm
