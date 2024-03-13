@@ -36,6 +36,3 @@
 
 # Build folder
 build
-
-# Main executable
-src/main
