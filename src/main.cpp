@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <stdlib.h>
 
 int main(int argc, char* argv[])
@@ -10,6 +12,15 @@ int main(int argc, char* argv[])
         return EXIT_FAILURE;
     }
 
-    std::cout << argv[1] << std::endl;
+    std::string contents;
+    {
+        std::stringstream contents_stream;
+        std::fstream input(argv[1], std::ios::in);
+        contents_stream << input.rdbuf();
+        contents = contents_stream.str();
+    }
+
+    std::cout << contents << std::endl;
+    
     return EXIT_SUCCESS;
 }
