@@ -1,7 +1,76 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <optional>
+#include <vector>
 #include <stdlib.h>
+
+enum class TokenType
+{
+    _return,
+    int_lit,
+    semi
+};
+
+struct Token {
+    TokenType type;
+    std::optional<std::string> value {};
+};
+
+std::vector<Token> tokenize(const std::string& str)
+{
+    std::vector<Token> tokens;
+
+    std::string buf;
+    for (int i = 0; i < str.length(); i++)
+    {
+        char c = str.at(i);
+        if (std::isalpha(c))
+        {
+            buf.push_back(c);
+            i++;
+            while (std::isalnum(str.at(i)))
+            {
+                buf.push_back(str.at(i));
+                i++;
+            }
+            i--;
+            if (buf == "return")
+            {
+                tokens.push_back({.type = TokenType::_return});
+                buf.clear();
+                continue;
+            }
+            else if (std::isdigit(c))
+            {
+                buf.push_back(c);
+                i++;
+                while (std::isdigit(str.at(i)))
+                {
+                    buf.push_back(str.at(i));
+                    i++;
+                }
+                i--;
+                tokens.push_back({.type = TokenType::int_lit, .value = buf});
+                buf.clear();
+            }
+            else if (c == ';')
+            {
+                tokens.push_back({.type = TokenType::semi});
+            }
+            else if (std::isspace(c))
+            {
+                continue;
+            }
+            else
+            {
+                std::cerr << "Ur syntax is cooked." << std::endl;
+                exit(EXIT_FAILURE);
+            }
+        }
+    }
+    return tokens;
+}
 
 int main(int argc, char* argv[])
 {
@@ -20,7 +89,9 @@ int main(int argc, char* argv[])
         contents = contents_stream.str();
     }
 
-    std::cout << contents << std::endl;
+    std::vector<Token> thing = tokenize(contents);
+
+    std::cout << "test";
     
     return EXIT_SUCCESS;
 }
