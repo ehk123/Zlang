@@ -42,14 +42,18 @@ public:
                 consume();
                 if (auto node_expr = parse_expr())
                 {
-                    exit_node = NodeExit{ .expr = node_expr.value() };
+                    exit_node = NodeExit{.expr = node_expr.value()};
                 }
                 else
                 {
                     std::cerr << "Ur expression is cooked." << std::endl;
                     exit(EXIT_FAILURE);
                 }
-                if (!peak().has_value() || peak().value().type != TokenType::semi)
+                if (peak().has_value() && peak().value().type == TokenType::semi)
+                {
+                    consume();
+                }
+                else
                 {
                     std::cerr << "Ur expression is cooked." << std::endl;
                     exit(EXIT_FAILURE);
