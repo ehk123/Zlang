@@ -1,7 +1,7 @@
 # zlang
 A compiled esoteric programming langauge designed to resemble popular Gen Z slang.
 
-## Building
+## Getting started
 Requires `nasm` and `ld` on a Linux operation system. If you are on Windows or macOS, look at [Multipass](https://ubuntu.com/blog/how-to-create-a-vscode-linux-remote-environment) to create Ubuntu VMs.
 ```
 git clone https://github.com/ehk123/zlang.git
