@@ -100,5 +100,5 @@ private:
     }
 
     const std::string m_src;
-    int m_index;
+    size_t m_index;
 };

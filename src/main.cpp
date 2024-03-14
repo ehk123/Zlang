@@ -5,8 +5,8 @@
 #include <vector>
 #include <stdlib.h>
 
-#include "./tokenization.hpp"
 #include "./parser.hpp"
+#include "./tokenization.hpp"
 
 int main(int argc, char *argv[])
 {
