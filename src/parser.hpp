@@ -46,7 +46,7 @@ public:
                 }
                 else
                 {
-                    std::cerr << "Ur expression is cooked." << std::endl;
+                    std::cerr << "Ur code is cooked." << std::endl;
                     exit(EXIT_FAILURE);
                 }
                 if (peak().has_value() && peak().value().type == TokenType::semi)
@@ -55,7 +55,7 @@ public:
                 }
                 else
                 {
-                    std::cerr << "Ur expression is cooked." << std::endl;
+                    std::cerr << "Ur code is cooked." << std::endl;
                     exit(EXIT_FAILURE);
                 }
             }

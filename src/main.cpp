@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 
     if (!tree.has_value())
     {
-        std::cerr << "Ur exit statement is cooked" << std::endl;
+        std::cerr << "Ur code is cooked" << std::endl;
         exit(EXIT_FAILURE);
     }
 
