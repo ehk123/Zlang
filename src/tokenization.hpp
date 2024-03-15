@@ -5,7 +5,7 @@
 
 enum class TokenType
 {
-    exit,
+    yeet,
     int_lit,
     semi
 };
@@ -37,9 +37,9 @@ public:
                 {
                     buf.push_back(consume());
                 }
-                if (buf == "exit")
+                if (buf == "yeet")
                 {
-                    tokens.push_back({.type = TokenType::exit});
+                    tokens.push_back({.type = TokenType::yeet});
                     buf.clear();
                     continue;
                 }

@@ -7,7 +7,7 @@
 class Generator
 {
 public:
-    inline explicit Generator(NodeExit root)
+    inline explicit Generator(NodeYeet root)
         : m_root(std::move(root))
     {
     }
@@ -23,5 +23,5 @@ public:
     }
 
 private:
-    const NodeExit m_root;
+    const NodeYeet m_root;
 };

@@ -7,7 +7,7 @@ struct NodeExpr
     Token int_lit;
 };
 
-struct NodeExit
+struct NodeYeet
 {
     NodeExpr expr;
 };
@@ -32,17 +32,17 @@ public:
         }
     }
 
-    std::optional<NodeExit> parse()
+    std::optional<NodeYeet> parse()
     {
-        std::optional<NodeExit> exit_node;
+        std::optional<NodeYeet> yeet_node;
         while (peak().has_value())
         {
-            if (peak().value().type == TokenType::exit)
+            if (peak().value().type == TokenType::yeet)
             {
                 consume();
                 if (auto node_expr = parse_expr())
                 {
-                    exit_node = NodeExit{.expr = node_expr.value()};
+                    yeet_node = NodeYeet{.expr = node_expr.value()};
                 }
                 else
                 {
@@ -61,7 +61,7 @@ public:
             }
         }
         m_index = 0;
-        return exit_node;
+        return yeet_node;
     }
 
 private:
