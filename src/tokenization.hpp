@@ -45,7 +45,7 @@ public:
                 }
                 else
                 {
-                    std::cerr << "Ur code is cooked." << std::endl;
+                    std::cerr << "ur code is cooked." << std::endl;
                     exit(EXIT_FAILURE);
                 }
             }
@@ -73,7 +73,7 @@ public:
             }
             else
             {
-                std::cerr << "Ur code is cooked." << std::endl;
+                std::cerr << "ur code is cooked." << std::endl;
                 exit(EXIT_FAILURE);
             }
         }

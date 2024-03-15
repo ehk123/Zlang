@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 {
     if (argc != 2)
     {
-        std::cerr << "Bruh u deadass sold. W rizz usage is..." << std::endl;
+        std::cerr << "bruh u deadass sold. W rizz usage is..." << std::endl;
         std::cerr << "zlang <input.zl>" << std::endl;
         return EXIT_FAILURE;
     }
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 
     if (!tree.has_value())
     {
-        std::cerr << "Ur code is cooked" << std::endl;
+        std::cerr << "ur code is cooked" << std::endl;
         exit(EXIT_FAILURE);
     }
 
