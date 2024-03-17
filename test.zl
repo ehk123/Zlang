@@ -1,2 +1,1 @@
-itsgiving x = 7;
-periodt(x);
+exit(42);

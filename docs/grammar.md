@@ -2,9 +2,9 @@ $$
 \begin{align}
     [\text{prog}] &\to [\text{stmt}]^*\\
     [\text{stmt}] &\to \begin{cases}
-                    periodt([\text{expr}]);\\
-                    itsgiving \; \text{ident} = [\text{expr}];
+                    exit([\text{expr}]);\\
+                    let \; \text{ident} = [\text{expr}];
                     \end{cases}\\
-    [\text{expr}] &\to \text{intlit}
+    [\text{expr}] &\to \text{int\\_lit}
 \end{align}
 $$

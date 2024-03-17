@@ -5,9 +5,11 @@
 
 enum class TokenType
 {
-    periodt,
-    intlit,
-    semi
+    exit,
+    int_lit,
+    semi,
+    open_paren,
+    close_paren
 };
 
 struct Token
@@ -33,19 +35,19 @@ public:
             if (std::isalpha(peek().value()))
             {
                 buf.push_back(consume());
-                while (peek().has_value() && std::isalnum(peek().value()))
+                while (peek().has_value() && (std::isalnum(peek().value())))
                 {
                     buf.push_back(consume());
                 }
-                if (buf == "periodt")
+                if (buf == "exit")
                 {
-                    tokens.push_back({.type = TokenType::periodt});
+                    tokens.push_back({.type = TokenType::exit});
                     buf.clear();
                     continue;
                 }
                 else
                 {
-                    std::cerr << "ur code is cooked." << std::endl;
+                    std::cerr << "ur code syntax is cooked." << std::endl;
                     exit(EXIT_FAILURE);
                 }
             }
@@ -56,9 +58,19 @@ public:
                 {
                     buf.push_back(consume());
                 }
-                tokens.push_back({.type = TokenType::intlit, .value = buf});
+                tokens.push_back({.type = TokenType::int_lit, .value = buf});
                 buf.clear();
                 continue;
+            }
+            else if (peek().value() == '(')
+            {
+                consume();
+                tokens.push_back({.type = TokenType::open_paren});
+            }
+            else if (peek().value() == ')')
+            {
+                consume();
+                tokens.push_back({.type = TokenType::close_paren});
             }
             else if (peek().value() == ';')
             {
@@ -73,7 +85,7 @@ public:
             }
             else
             {
-                std::cerr << "ur code is cooked." << std::endl;
+                std::cerr << "ur code syntax is cooked." << std::endl;
                 exit(EXIT_FAILURE);
             }
         }

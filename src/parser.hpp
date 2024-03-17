@@ -4,7 +4,7 @@
 
 struct NodeExpr
 {
-    Token intlit;
+    Token int_lit;
 };
 
 struct NodePeriodt
@@ -22,9 +22,9 @@ public:
 
     std::optional<NodeExpr> parse_expr()
     {
-        if (peek().has_value() && peek().value().type == TokenType::intlit)
+        if (peek().has_value() && peek().value().type == TokenType::int_lit)
         {
-            return NodeExpr{.intlit = consume()};
+            return NodeExpr{.int_lit = consume()};
         }
         else
         {
@@ -34,20 +34,29 @@ public:
 
     std::optional<NodePeriodt> parse()
     {
-        std::optional<NodePeriodt> periodt_node;
+        std::optional<NodePeriodt> exit_node;
         while (peek().has_value())
         {
-            if (peek().value().type == TokenType::periodt)
+            if (peek().value().type == TokenType::exit && peek(1).has_value() && peek(1).value().type == TokenType::open_paren)
             {
+                consume();
                 consume();
                 if (auto node_expr = parse_expr())
                 {
-                    periodt_node = NodePeriodt{.expr = node_expr.value()};
+                    exit_node = NodePeriodt{.expr = node_expr.value()};
                 }
                 else
                 {
-                    std::cerr << "Ur code is cooked." << std::endl;
+                    std::cerr << "ur expression is cooked." << std::endl;
                     exit(EXIT_FAILURE);
+                }
+                if (peek().has_value() && peek().value().type == TokenType::close_paren)
+                {
+                    consume();
+                }
+                else
+                {
+                    std::cerr << "no `)` is cooked." << std::endl;
                 }
                 if (peek().has_value() && peek().value().type == TokenType::semi)
                 {
@@ -55,13 +64,13 @@ public:
                 }
                 else
                 {
-                    std::cerr << "ur code is cooked." << std::endl;
+                    std::cerr << "no `;` is cooked." << std::endl;
                     exit(EXIT_FAILURE);
                 }
             }
         }
         m_index = 0;
-        return periodt_node;
+        return exit_node;
     }
 
 private:
