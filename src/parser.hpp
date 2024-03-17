@@ -7,7 +7,7 @@ struct NodeExpr
     Token int_lit;
 };
 
-struct NodeYeet
+struct NodePeriodt
 {
     NodeExpr expr;
 };
@@ -22,7 +22,7 @@ public:
 
     std::optional<NodeExpr> parse_expr()
     {
-        if (peak().has_value() && peak().value().type == TokenType::int_lit)
+        if (peek().has_value() && peek().value().type == TokenType::int_lit)
         {
             return NodeExpr{.int_lit = consume()};
         }
@@ -32,24 +32,24 @@ public:
         }
     }
 
-    std::optional<NodeYeet> parse()
+    std::optional<NodePeriodt> parse()
     {
-        std::optional<NodeYeet> yeet_node;
-        while (peak().has_value())
+        std::optional<NodePeriodt> periodt_node;
+        while (peek().has_value())
         {
-            if (peak().value().type == TokenType::yeet)
+            if (peek().value().type == TokenType::periodt)
             {
                 consume();
                 if (auto node_expr = parse_expr())
                 {
-                    yeet_node = NodeYeet{.expr = node_expr.value()};
+                    periodt_node = NodePeriodt{.expr = node_expr.value()};
                 }
                 else
                 {
                     std::cerr << "Ur code is cooked." << std::endl;
                     exit(EXIT_FAILURE);
                 }
-                if (peak().has_value() && peak().value().type == TokenType::semi)
+                if (peek().has_value() && peek().value().type == TokenType::semi)
                 {
                     consume();
                 }
@@ -61,11 +61,11 @@ public:
             }
         }
         m_index = 0;
-        return yeet_node;
+        return periodt_node;
     }
 
 private:
-    [[nodiscard]] inline std::optional<Token> peak(int ahead = 1) const
+    [[nodiscard]] inline std::optional<Token> peek(int ahead = 1) const
     {
         if (m_index + ahead > m_tokens.size())
         {
