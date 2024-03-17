@@ -47,7 +47,7 @@ public:
                 }
                 else
                 {
-                    std::cerr << "ur code syntax is cooked." << std::endl;
+                    std::cerr << "Ruh roh. Error alert!" << std::endl;
                     exit(EXIT_FAILURE);
                 }
             }
@@ -85,7 +85,7 @@ public:
             }
             else
             {
-                std::cerr << "ur code syntax is cooked." << std::endl;
+                std::cerr << "Ruh roh. Error alert!" << std::endl;
                 exit(EXIT_FAILURE);
             }
         }

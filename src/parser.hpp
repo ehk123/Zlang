@@ -7,7 +7,7 @@ struct NodeExpr
     Token int_lit;
 };
 
-struct NodePeriodt
+struct NodeExit
 {
     NodeExpr expr;
 };
@@ -32,9 +32,9 @@ public:
         }
     }
 
-    std::optional<NodePeriodt> parse()
+    std::optional<NodeExit> parse()
     {
-        std::optional<NodePeriodt> exit_node;
+        std::optional<NodeExit> exit_node;
         while (peek().has_value())
         {
             if (peek().value().type == TokenType::exit && peek(1).has_value() && peek(1).value().type == TokenType::open_paren)
@@ -43,11 +43,11 @@ public:
                 consume();
                 if (auto node_expr = parse_expr())
                 {
-                    exit_node = NodePeriodt{.expr = node_expr.value()};
+                    exit_node = NodeExit{.expr = node_expr.value()};
                 }
                 else
                 {
-                    std::cerr << "ur expression is cooked." << std::endl;
+                    std::cerr << "Invalid expression" << std::endl;
                     exit(EXIT_FAILURE);
                 }
                 if (peek().has_value() && peek().value().type == TokenType::close_paren)
@@ -56,7 +56,7 @@ public:
                 }
                 else
                 {
-                    std::cerr << "no `)` is cooked." << std::endl;
+                    std::cerr << "Expected `)`" << std::endl;
                 }
                 if (peek().has_value() && peek().value().type == TokenType::semi)
                 {
@@ -64,7 +64,7 @@ public:
                 }
                 else
                 {
-                    std::cerr << "no `;` is cooked." << std::endl;
+                    std::cerr << "Expected `;`" << std::endl;
                     exit(EXIT_FAILURE);
                 }
             }

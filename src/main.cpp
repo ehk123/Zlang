@@ -11,8 +11,8 @@ int main(int argc, char *argv[])
 {
     if (argc != 2)
     {
-        std::cerr << "bruh u deadass sold. W rizz usage is..." << std::endl;
-        std::cerr << "zlang <input.zl>" << std::endl;
+        std::cerr << "Correct usage is" << std::endl;
+        std::cerr << "ethan <input.ecl>" << std::endl;
         return EXIT_FAILURE;
     }
 
@@ -28,11 +28,11 @@ int main(int argc, char *argv[])
     std::vector<Token> tokens = tokenizer.tokenize();
 
     Parser parser(std::move(tokens));
-    std::optional<NodePeriodt> tree = parser.parse();
+    std::optional<NodeExit> tree = parser.parse();
 
     if (!tree.has_value())
     {
-        std::cerr << "ur code is cooked" << std::endl;
+        std::cerr << "Ruh roh. Error alert!" << std::endl;
         exit(EXIT_FAILURE);
     }
 
