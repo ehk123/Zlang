@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
     std::vector<Token> tokens = tokenizer.tokenize();
 
     Parser parser(std::move(tokens));
-    std::optional<NodeYeet> tree = parser.parse();
+    std::optional<NodePeriodt> tree = parser.parse();
 
     if (!tree.has_value())
     {

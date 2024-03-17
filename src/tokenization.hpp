@@ -6,7 +6,7 @@
 enum class TokenType
 {
     periodt,
-    int_lit,
+    intlit,
     semi
 };
 
@@ -56,7 +56,7 @@ public:
                 {
                     buf.push_back(consume());
                 }
-                tokens.push_back({.type = TokenType::int_lit, .value = buf});
+                tokens.push_back({.type = TokenType::intlit, .value = buf});
                 buf.clear();
                 continue;
             }

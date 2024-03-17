@@ -4,7 +4,7 @@
 
 struct NodeExpr
 {
-    Token int_lit;
+    Token intlit;
 };
 
 struct NodePeriodt
@@ -22,9 +22,9 @@ public:
 
     std::optional<NodeExpr> parse_expr()
     {
-        if (peek().has_value() && peek().value().type == TokenType::int_lit)
+        if (peek().has_value() && peek().value().type == TokenType::intlit)
         {
-            return NodeExpr{.int_lit = consume()};
+            return NodeExpr{.intlit = consume()};
         }
         else
         {
