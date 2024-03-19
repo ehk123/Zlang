@@ -11,8 +11,7 @@ int main(int argc, char *argv[])
 {
     if (argc != 2)
     {
-        std::cerr << "Correct usage is" << std::endl;
-        std::cerr << "ethan <input.ecl>" << std::endl;
+        std::cerr << "Correct usage is ethan <input.zl>" << std::endl;
         return EXIT_FAILURE;
     }
 
